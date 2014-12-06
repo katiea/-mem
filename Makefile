@@ -1,0 +1,18 @@
+mem: mem.c mem.h
+	gcc -c -fpic mem.c -Wall -Werror
+	gcc -shared -o libmem.so mem.o
+	gcc -lmem -L. -Wall -o coalesce1 coalesce1.c
+	gcc -lmem -L. -Wall -o coalesce2 coalesce2.c
+	gcc -lmem -L. -Wall -o coalesce3 coalesce3.c
+	gcc -lmem -L. -Wall -o coalesce4 coalesce4.c
+	gcc -lmem -L. -Wall -o coalesce5 coalesce5.c
+	gcc -lmem -L. -Wall -o coalesce6 coalesce6.c
+
+clean:
+	rm -rf mem.o libmem.so	
+
+#LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
+#export LD_LIBRARY_PATH
+#echo $LD_LIBRARY_PATH
+#echo $PATH
+
